@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MealDetail extends StatelessWidget {
+class MealDetailScreen extends StatelessWidget {
   static const routeName = '/meal-detail';
 
   @override

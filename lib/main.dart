@@ -27,8 +27,24 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => CategoriesScreen(),
         CategoryMealScreen.routeName: (context) => CategoryMealScreen(),
-        MealDetail.routeName: (context) => MealDetail()
+        MealDetailScreen.routeName: (context) => MealDetailScreen()
       },
+      // if a particular route is not found we can move to someother screen by doing this
+
+      // onGenerateRoute: (settings) {
+      //   print(settings.arguments);
+      //   if(settings.name == '/meal-detail'){
+      //     return ...;
+      //   }else if(settings.name = '/something-else'){
+      //     return ...;
+      //   }
+      //   return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
+      // },
+
+      // if page does not exist we can do this
+
+      // onUnknownRoute: (settings) =>
+      //     MaterialPageRoute(builder: (ctx) => CategoriesScreen()),
     );
   }
 }

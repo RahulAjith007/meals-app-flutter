@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import './screens/filter_screen.dart';
 import './screens/tab_screen.dart';
 import 'screens/meal_detail_screen.dart';
 import 'screens/category_meals_screen.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => TabScreen(),
         CategoryMealScreen.routeName: (context) => CategoryMealScreen(),
-        MealDetailScreen.routeName: (context) => MealDetailScreen()
+        MealDetailScreen.routeName: (context) => MealDetailScreen(),
+        FilterScreen.routeName: (context) => FilterScreen()
       },
       // if a particular route is not found we can move to someother screen by doing this
 

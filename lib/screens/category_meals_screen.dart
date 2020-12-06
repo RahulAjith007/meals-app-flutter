@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 import '../data/data.dart';
 import '../widgets/meal_item.dart';
 
-class CategoryMealScreen extends StatelessWidget {
+class CategoryMealScreen extends StatefulWidget {
   static const routeName = '/category-meals';
-  // final String categoryId;
-  // final String categorTitle;
 
-  // CategoryMealScreen(this.categoryId, this.categorTitle);
+  @override
+  _CategoryMealScreenState createState() => _CategoryMealScreenState();
+}
+
+class _CategoryMealScreenState extends State<CategoryMealScreen> {
+  void initState() {
+    super.initState();
+  }
+
+  void _removeMeal(String mealId) {}
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +38,8 @@ class CategoryMealScreen extends StatelessWidget {
                 imageUrl: categoryMeals[index].imageUrl,
                 duration: categoryMeals[index].duration,
                 complexity: categoryMeals[index].complexity,
-                affordability: categoryMeals[index].affordability);
+                affordability: categoryMeals[index].affordability,
+                removeItem: _removeMeal);
           },
           itemCount: categoryMeals.length,
         ));

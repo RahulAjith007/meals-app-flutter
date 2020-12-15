@@ -1,21 +1,37 @@
 import 'package:flutter/material.dart';
-import '../widgets/main_drawer.dart';
-import './favourites_screen.dart';
-import './categories_screen.dart';
 
-class TabScreen extends StatefulWidget {
+import '../widgets/main_drawer.dart';
+import './favorites_screen.dart';
+import './categories_screen.dart';
+import '../models/meal.dart';
+
+class TabsScreen extends StatefulWidget {
+  final List<Meal> favoriteMeals;
+
+  TabsScreen(this.favoriteMeals);
+
   @override
-  _TabScreenState createState() => _TabScreenState();
+  _TabsScreenState createState() => _TabsScreenState();
 }
 
-class _TabScreenState extends State<TabScreen> {
-  List<Map<String, dynamic>> _pages = [
-    //dynamic or object is possible
-    {"page": CategoriesScreen(), "title": "Categories"},
-    {"page": FavouritesScreen(), "title": "Your Favourites"}
-  ];
-
+class _TabsScreenState extends State<TabsScreen> {
+  List<Map<String, Object>> _pages;
   int _selectedPageIndex = 0;
+
+  @override
+  void initState() {
+    _pages = [
+      {
+        'page': CategoriesScreen(),
+        'title': 'Categories',
+      },
+      {
+        'page': FavoritesScreen(widget.favoriteMeals),
+        'title': 'Your Favorite',
+      },
+    ];
+    super.initState();
+  }
 
   void _selectPage(int index) {
     setState(() {
@@ -38,15 +54,19 @@ class _TabScreenState extends State<TabScreen> {
         selectedItemColor: Theme.of(context).accentColor,
         currentIndex: _selectedPageIndex,
         type: BottomNavigationBarType.shifting,
+
+        // type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-              backgroundColor: Theme.of(context).primaryColor,
-              icon: Icon(Icons.category),
-              label: "Categories"),
+            backgroundColor: Theme.of(context).primaryColor,
+            icon: Icon(Icons.category),
+            label: 'Categories',
+          ),
           BottomNavigationBarItem(
-              backgroundColor: Theme.of(context).primaryColor,
-              icon: Icon(Icons.star),
-              label: "Favourites"),
+            backgroundColor: Theme.of(context).primaryColor,
+            icon: Icon(Icons.star),
+            label: 'Favorites',
+          ),
         ],
       ),
     );

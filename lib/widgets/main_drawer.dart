@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
-import '../screens/filter_screen.dart';
+
+import '../screens/filters_screen.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(String title, IconData icon, Function tapHandler) {
-    return (ListTile(
-        leading: Icon(
-          icon,
-          size: 26,
+    return ListTile(
+      leading: Icon(
+        icon,
+        size: 26,
+      ),
+      title: Text(
+        title,
+        style: TextStyle(
+          fontFamily: 'RobotoCondensed',
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
         ),
-        title: Text(
-          title,
-          style: TextStyle(
-              fontFamily: 'RobotoCondensed',
-              fontSize: 24,
-              fontWeight: FontWeight.bold),
-        ),
-        onTap: tapHandler));
+      ),
+      onTap: tapHandler,
+    );
   }
 
   @override
@@ -30,7 +33,7 @@ class MainDrawer extends StatelessWidget {
             alignment: Alignment.centerLeft,
             color: Theme.of(context).accentColor,
             child: Text(
-              'Cooking Up !',
+              'Cooking Up!',
               style: TextStyle(
                   fontWeight: FontWeight.w900,
                   fontSize: 30,
@@ -40,12 +43,12 @@ class MainDrawer extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          buildListTile("Meals", Icons.restaurant, () {
+          buildListTile('Meals', Icons.restaurant, () {
             Navigator.of(context).pushReplacementNamed('/');
           }),
-          buildListTile("Filters", Icons.settings, () {
-            Navigator.of(context).pushReplacementNamed(FilterScreen.routeName);
-          })
+          buildListTile('Filters', Icons.settings, () {
+            Navigator.of(context).pushReplacementNamed(FiltersScreen.routeName);
+          }),
         ],
       ),
     );
